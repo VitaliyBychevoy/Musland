@@ -1,0 +1,18 @@
+{% extends "menu_app/base.html" %}
+{% block content %}
+<div>
+    <a href="{% url 'add_product' seller.id %}">
+        <button type="button">Додати товар</button>
+    </a>
+</div>
+<div>
+    <p>Привіт {{seller.name}}.</p><br>
+
+    {% for product in products %}
+    <p>Товар: {{product.title}}.  {{product.price}} грн.</p></br>
+    <p><a href="{% url 'product' product.id %}"><button type="button">Детальна информація</button></a></p>
+    {% empty %}
+    <p>Ви не опублікували жодного повідомлення.</p>
+    {% endfor %}
+</div>
+{% endblock content %}

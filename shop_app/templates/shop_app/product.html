@@ -1,0 +1,45 @@
+{% extends "menu_app/base.html" %}
+{% block content %}
+{{product.title}}<br>
+{{product.price}}<br>
+{{product.country}}<br>
+{{product.city}}<br>
+{{product.message}}<br>
+{{product.seller.name}}<br>
+{{product.seller.phone}}<br>
+
+{% for photo in photos %}
+<div>
+    <ul>
+        <li>
+            <img src="{{ photo.photo.url }}" alt="{{ photo.description }}">
+        </li>
+    </ul>
+</div>
+{% empty %}
+<p>Немає фото</p>
+{% endfor %}
+
+
+{% if product.seller.facebook_link is null %}
+{% else %}
+    Facebook: <a href="product.seller.facebook_link">{{product.seller.facebook_link}}</a><br>
+{% endif %}
+
+{% if product.seller.telegram_link is null %}
+{% else %}
+    Telegram: <a href="product.seller.telegram_link">{{product.seller.telegram_link}}</a><br>
+{% endif %}
+
+{% if product.seller.instagram_link is null %}
+{% else %}
+    Instagram: <a href="product.seller.instagram_link">{{product.seller.instagram_link}}</a><br>
+{% endif %}
+
+<a href="{% url 'del_prod' product.id %}">
+    <button type="submit">Видалити об'яву</button><br>
+</a>
+<a href="{% url 'edit_prod' product.id %}">
+    <button>Редагувати об'яву</button><br>
+</a>
+{% endblock content %}

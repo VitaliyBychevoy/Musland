@@ -1,0 +1,15 @@
+{% extends "menu_app/base.html" %}
+{% block content %}
+
+<p>Категорія: {{category_by_id.type_instrument}}</p><br>
+
+    {% for instrument in list_instrument %}
+    <a href="{% url 'products' instrument.id %}">
+        <button type="button">{{instrument.sub_instrument}}</button>
+    </a><br>
+
+    {% empty %}
+        <h3>Немає жодного інструмента у категорії {{category_by_id.type_instrument}}</h3>
+    {% endfor %}
+
+{% endblock content %}

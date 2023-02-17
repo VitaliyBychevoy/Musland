@@ -1,0 +1,70 @@
+{% extends "menu_app/base.html" %}
+{% block content %}
+<h1>{{ seller.name }} додає новий товар.</h1>
+<div>
+    <form method="post" action="" enctype="multipart/form-data">
+     {% csrf_token %}
+        <p>Блок інструмента</p>
+        <div>
+            <label>Оберіть інструмент</label>
+            <select name="instrument">
+                <option value="none">Інструмент...</option>
+                {% for instr in instruments %}
+                <option value="{{instr.id}}">{{ instr.sub_instrument }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <p>Блок створення нового інструмента</p>
+        <div>
+            <label>Оберіть категорію</label>
+            <select name="category">
+                <option value="none">Категорія...</option>
+                {% for categ in categories %}
+                <option value="{{categ.id}}">{{ categ.type_instrument }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label>Створити новий інструмент.</label>
+            <input type="text" name="instrument_new" >
+        </div>
+
+
+        <p>Інформація про товар.</p>
+
+        <div>
+            <label>Заголоков повідомлення</label>
+            <input type="text" name="title">
+        </div>
+        <div>
+            <label>Ціна</label>
+            <input type="text" name="price">
+        </div>
+        <div>
+            <label>Країна</label>
+            <input type="text" name="country" placeholder="Ukraine">
+        </div>
+        <div>
+            <label>Місто</label>
+            <input type="text" name="city">
+        </div>
+        <div>
+            <label>Опис товара</label>
+            <input type="text" name="message">
+        </div>
+
+
+        <p>Фото блок</p>
+        <div>
+            <label>Опис зображення:</label>
+            <input type="text" name="description">
+        </div>
+
+        <div>
+            <label>Додаємо зображення</label>
+            <input type="file" name="image">
+        </div>
+        <button type="submit">Додати</button>
+    </form>
+</div>
+{% endblock content %}

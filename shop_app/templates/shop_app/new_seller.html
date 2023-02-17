@@ -1,0 +1,11 @@
+{% extends "menu_app/base.html" %}
+
+{% block content %}
+<h1>Створення нового продавця</h1>
+    <form action="{% url 'new_seller_name' %}" method="post">
+      {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Додати продавця</button>
+    </form>
+
+{% endblock content %}

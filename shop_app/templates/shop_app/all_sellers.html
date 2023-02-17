@@ -1,0 +1,41 @@
+{% extends "menu_app/base.html" %}
+{% block content %}
+
+    {% for seller in sellers %}
+        <p>
+            Id - {{seller.id}}.
+        </p><br>
+        <p>
+            Ім'я - {{seller.name}}.
+        </p><br>
+        <p>
+            Телефон: {{seller.phone}}.
+        </p><br>
+
+        {% if seller.facebook_link is null %}
+        {% else %}
+            Facebook: <a href="seller.facebook_link">{{seller.facebook_link}}</a><br>
+        {% endif %}
+
+        {% if seller.telegram_link is null %}
+        {% else %}
+            Telegram: <a href="seller.telegram_link">{{seller.telegram_link}}</a><br>
+        {% endif %}
+
+        {% if seller.instagram_link is null %}
+        {% else %}
+            Instagram: <a href="seller.instagram_link">{{seller.instagram_link}}</a><br>
+        {% endif %}
+        <a href="{% url 'delete_seller_name' seller.id %}"><button type="button">Видалити</button></a><br>
+        <a href="{% url 'update_seller_name' seller.id %}"><button type="button">Змінити</button></a><br>
+        <a href="{% url 'my_products_name' seller.id %}">
+            <button type="button">Усі товари продавця {{seller.name}}</button>
+        </a><br>
+    <hr>
+    <hr>
+    <hr>
+
+    {% empty %}
+    {% endfor %}
+
+{% endblock content %}

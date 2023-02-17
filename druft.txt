@@ -1,0 +1,3 @@
+            <a href="{% url 'instrument' category.id %}">
+                <button type="button">{{category.type_instrument}}</button>
+            </a><br>

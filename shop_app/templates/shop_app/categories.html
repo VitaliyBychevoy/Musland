@@ -1,0 +1,13 @@
+{% extends "menu_app/base.html" %}
+{% block content %}
+Categories:<br>
+
+    {% for category in category_list %}
+            <a href="{% url 'instrument' category.id %}">
+                <button type="button">{{category.type_instrument}}</button>
+            </a><br>
+    {% empty %}
+        Немає об'яв про інструменти обраної категорії.
+    {% endfor %}
+
+{% endblock content %}

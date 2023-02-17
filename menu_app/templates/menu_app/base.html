@@ -1,0 +1,22 @@
+<p>
+    <a href="{% url 'index' %}">
+        <button type="button">Головна</button>
+    </a>
+</p>
+
+<p>
+    <a href="{% url 'new_seller_name' %}">
+        <button type="button">Новий продавець</button>
+    </a>
+</p>
+
+<p>
+    <a href="{% url 'all_sellers_name' %}">
+        <button type="button">Усі продавці</button>
+    </a>
+</p>
+
+
+{% block content %}
+
+{% endblock content %}

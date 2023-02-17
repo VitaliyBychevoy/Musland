@@ -1,0 +1,17 @@
+{% extends "menu_app/base.html" %}
+{% block content %}
+<p>Інструмент: {{instrument.sub_instrument}}</p><br>
+
+    {% for product in products %}
+        <p>{{product.title}}  ціна: {{product.price}} грн.</p><br>
+        <p>Місто: {{product.city}}
+            <a href="{% url 'product' product.id %}"><button>Більше інформації</button></a>
+        </p><br>
+
+        <hr>
+        <hr>
+    {% empty %}
+        <p>Наразі відсутні об'яви про продаж подібних інструментів.</p>
+
+    {% endfor %}
+{% endblock content %}

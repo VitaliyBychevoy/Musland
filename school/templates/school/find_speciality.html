@@ -1,0 +1,13 @@
+{% block content %}
+    {% for teacher in teachers %}
+
+        <p>
+            <a href="#"><button>{{teacher.speciality}}</button></a>
+        </p><br>
+
+        <hr>
+        <hr>
+    {% empty %}
+        <p>Наразі викладачі відсутні.</p>
+    {% endfor %}
+{% endblock content %}

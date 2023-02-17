@@ -1,0 +1,67 @@
+{% extends "menu_app/base.html" %}
+{% block content %}
+<form method="post" action="{% url 'edit_prod' product.id%}" enctype="multipart/form-data">
+     {% csrf_token %}
+        <p>Блок інструмента</p>
+        <div>
+            <label>Оберіть інструмент</label>
+            <select name="instrument">
+                <option value="{{ instrument.sub_instrument }}" >{{ instrument.sub_instrument }}</option>
+                {% for instr in instruments %}
+                <option value="{{instr.id}}">{{ instr.sub_instrument }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <p>Блок створення нового інструмента</p>
+        <div>
+            <label>Оберіть категорію</label>
+            <select name="category">
+                <option value="none">{{category.type_instrument}}</option>
+                {% for categ in categories %}
+                <option value="{{categ.id}}">{{ categ.type_instrument }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label>Створити новий інструмент.</label>
+            <input type="text" name="instrument_new" >
+        </div>
+
+
+        <p>Інформація про товар.</p>
+
+        <div>
+            <label>Заголоков повідомлення</label>
+            <input type="text" name="title"  value="{{ product.title }}">
+        </div>
+        <div>
+            <label>Ціна</label>
+            <input type="text" name="price" value="{{ product.price }}">
+        </div>
+        <div>
+            <label>Країна</label>
+            <input type="text" name="country" placeholder="Ukraine">
+        </div>
+        <div>
+            <label>Місто</label>
+            <input type="text" name="city" value="{{ product.city }}">
+        </div>
+        <div>
+            <label>Опис товара</label>
+            <input type="text" name="message" value="{{ product.message }}">
+        </div>
+
+
+        <p>Фото блок</p>
+        <div>
+            <label>Опис зображення:</label>
+            <input type="text" name="description" value="{{ photo.description }}">
+        </div>
+
+        <div>
+            <label>Додаємо зображення</label>
+            <input type="file" name="image" >
+        </div>
+        <button type="submit">Додати</button>
+    </form>
+{% endblock content %}
